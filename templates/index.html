@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div  class="title">
+    <h1>
+        <b style="color: #7185BD">⋆ ˚｡⋆୨୧˚</b> 
+        <span style="font-weight: normal; color: #3E4B70">Popular Skincare Products</span>
+        <b style="color: #7185BD">˚୨୧⋆｡˚ ⋆</b></h1>
+    </div>
+    
+    <nav>
+        <p style="color: #547067">᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃ ᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃ ᠃ ⚘᠂ ⚘ ˚ ⚘ ᠂ ⚘ ᠃</p>
+        <ul class="navigate">
+            <li><a href="/">All Products</a></li>
+            <li><a href="dry.html">For Dry Skin</a></li>
+            <li><a href="oily.html">For Oily Skin</a></li>
+            <li><a href="sensitive.html">For Sensitive Skin</a></li>
+        </ul>
+    </nav>
+    <!-- products-->
+    <div id="products" class="productrow">
+        {% for product in products %}
+        <div class="product">
+            <div class="imgbox">
+                <img src="../static/{{product.id}}.JPG" alt="">
+            </div>
+            <div class="txt">
+                <h5>{{product.brand}}</h5>
+                <h4>{{product.name}}</h4>
+                <p style="font-size: 10px;">{{product.volume}}</p>
+                <p>{{product.price}}</p>
+                <a href="#open{{product.id}}" class="bagbuttons">DETAILS</a>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+    <!-- modal window -->
+    <div>
+        {% for product in products %}
+        <div id="open{{product.id}}" class= "modalw">
+            <div class="msgbox">
+                <a href="#products" class="ebtn">X</a>
+                <h5>ABOUT</h5>
+                <hr style="background-color: rgb(128, 184, 233); color:rgb(231, 252, 201); height: 2px; border: none;">
+                <div class="infobox">
+                    <img src="../static/{{product.id}}.JPG" alt="">
+                    <div>
+                        <p style="font-size: 12px;">{{product.brand}}</p>
+                        <h4>{{product.name}}</h4>
+
+                        <p style="font-size: 12px;">{{product.volume}}</p>
+                        <p style="font-size: 14px;">{{product.price}}</p> 
+                    </div>  
+
+                </div>
+                <div><p style="font-size: 13px;" ><b>Description: </b>{{product.info}}</p></div>
+                <div class="minfo">
+                    <p class="ingred"><b>Ingredients: </b>{{product.ingredients}}</p>
+                    <hr style="background-color: white; color:white; height: 2px; border: none;">
+                    <br>
+                    <a href="{{product.url}}" class="cbtn"> Purchase </a>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</body>
+</html>
